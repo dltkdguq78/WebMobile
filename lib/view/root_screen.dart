@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'screen/home_screen.dart';
 import 'screen/member/login_screen.dart';
+import 'screen/market/point_market_screen.dart';
 
 class RootScreen extends StatefulWidget{
 
@@ -63,6 +64,10 @@ class RootScreenState extends State<RootScreen>{
           ListTile(
             onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (context) => LoginScreen(user_id: "서정삼",))),
             title: Text("로그인"),
+          ),
+          ListTile(
+            onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (context) => PointMarketScreen())),
+            title: Text("포인트 마켓"),
           )
         ],
       ),
