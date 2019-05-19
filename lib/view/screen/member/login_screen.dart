@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:dambi/view/screen/signin/signin_screen.dart';
 
 class LoginScreen extends StatefulWidget {
 
@@ -58,31 +59,52 @@ class LoginScreenState extends State<LoginScreen> {
                 padding: EdgeInsets.only(left: MediaQuery.of(context).size.width * 0.2, right: MediaQuery.of(context).size.width * 0.2),
                 child: Column(
                   children: <Widget>[
-                    TextField(decoration: InputDecoration(hintText: "Id"), controller: id_controller,),
+                    TextField(textAlign: TextAlign.center, decoration: InputDecoration(hintText: "ID"), controller: id_controller,),
                     SizedBox(height: 10.0,),
-                    TextField(decoration: InputDecoration(hintText: "Password"), obscureText: true, controller: pw_controller,),
+                    TextField(textAlign: TextAlign.center, decoration: InputDecoration(hintText: "PASSWORD"), obscureText: true, controller: pw_controller,),
                   ],
                 ),
               ),
               SizedBox(height: 20.0,),
               InkWell(
-                onTap: () => onLoginButtonAction(),
                 child: Container(
-                  padding: EdgeInsets.only(top: 10.0, bottom: 10.0, right: 30.0, left: 30.0),
-                  decoration: BoxDecoration(borderRadius: BorderRadius.circular(10.0), color: Color(0xff9dc3e6), border: Border.all(width: 0.3)),
-                  child: Text("로그인"),
+                  child: RaisedButton(
+                    color: Colors.black26,
+                    shape: new RoundedRectangleBorder(
+                        borderRadius: new BorderRadius.circular(20.0)),
+                    child: new Text("로그인",
+                        style: new TextStyle(
+                            color: Colors.black,
+                            fontSize: 14.0,
+                            fontWeight: FontWeight.bold)),
+                    onPressed: () => onLoginButtonAction(),
+                ),
                 ),
               ),
               RaisedButton(
-                onPressed: (){},
-                color: Color(0xffffe699),
-                child: Text("회원가입"),
+                color: Colors.black26,
+                shape: new RoundedRectangleBorder(
+                    borderRadius: new BorderRadius.circular(20.0)),
+                child: new Text("회원가입",
+                    style: new TextStyle(
+                        color: Colors.black,
+                        fontSize: 14.0,
+                        fontWeight: FontWeight.bold)),
+                onPressed: () => onSignInButtonAction(),
               ),
               SizedBox(height: 20.0,),
-              FlatButton(
-                onPressed: () {},
-                child: Text("아이디/비밀번호 찾기"),
-              )
+          Container(
+            child:GestureDetector(
+              onTap:() => onFindInfoButtonAction(),
+              child: Text(
+                "아이디/비밀번호 찾기",
+                style: TextStyle(
+                    decoration: TextDecoration.underline,
+                    color: Colors.black45,
+                    fontSize: 12.0),
+              ),
+            ),
+          ),
             ],
           ),
         ),
@@ -94,5 +116,13 @@ class LoginScreenState extends State<LoginScreen> {
     print('로그인 버튼 터치');
     print('${id_controller.text} / ${pw_controller.text}');
   }
-
+  onFindInfoButtonAction(){
+    print("아직 안만들었어");
+  }
+  onSignInButtonAction(){
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => SigninScreen()),
+    );
+  }
 }
