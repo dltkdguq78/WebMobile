@@ -30,7 +30,7 @@ class LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0xfff8cbad),
+        backgroundColor: Color(0xfffff2cc),
         elevation: 0.0,
         leading: InkWell(
           onTap: () => Navigator.of(context).pop(),
@@ -38,7 +38,7 @@ class LoginScreenState extends State<LoginScreen> {
         ),
       ),
       body: _buildBody(),
-      backgroundColor: Color(0xfff8cbad),
+      backgroundColor: Color(0xfffff2cc),
     );
   }
 
@@ -69,7 +69,7 @@ class LoginScreenState extends State<LoginScreen> {
               InkWell(
                 child: Container(
                   child: RaisedButton(
-                    color: Colors.black26,
+                    color: Color(0xfff8cbad),
                     shape: new RoundedRectangleBorder(
                         borderRadius: new BorderRadius.circular(20.0)),
                     child: new Text("로그인",
@@ -82,7 +82,7 @@ class LoginScreenState extends State<LoginScreen> {
                 ),
               ),
               RaisedButton(
-                color: Colors.black26,
+                color: Color(0xfff8cbad),
                 shape: new RoundedRectangleBorder(
                     borderRadius: new BorderRadius.circular(20.0)),
                 child: new Text("회원가입",
@@ -100,7 +100,7 @@ class LoginScreenState extends State<LoginScreen> {
                 "아이디/비밀번호 찾기",
                 style: TextStyle(
                     decoration: TextDecoration.underline,
-                    color: Colors.black45,
+                    color: Colors.black,
                     fontSize: 12.0),
               ),
             ),

@@ -50,6 +50,10 @@ class RootScreenState extends State<RootScreen>{
 
   _buildDrawer(){
     return Drawer(
+      child:Container(
+        decoration: BoxDecoration(
+          color: Color(0xfffff2cc),
+        ),
       child: Column(
         children: <Widget>[
           Container(
@@ -57,19 +61,20 @@ class RootScreenState extends State<RootScreen>{
             child: DrawerHeader(
               child: Text('사용자 정보'),
               decoration: BoxDecoration(
-                color: Color(0xfff4b183),
+                color: Color(0xfff8cbad),
               ),
             ),
           ),
           ListTile(
-            onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (context) => LoginScreen(user_id: "서정삼",))),
+            onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (context) => LoginScreen(user_id: "이광오짱짱맨",))),
             title: Text("로그인"),
           ),
           ListTile(
             onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (context) => PointMarketScreen())),
             title: Text("포인트 마켓"),
-          )
+          ),
         ],
+      ),
       ),
     );
   }

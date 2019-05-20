@@ -100,10 +100,10 @@ class HomeScreenState extends State<HomeScreen>{
     );
   }
 
-  _buildTodaysWeather(){
+  _buildWeeklyWeather(){
 
-    DateTime now = DateTime.now();
-    String today_date = "${now.month}월 ${now.day}일";
+   //DateTime now = DateTime.now();
+    //String today_date = "${now.month}월 ${now.day}일";
 
     return Container(
       margin: EdgeInsets.only(left: 10.0, right: 10.0, top: 10.0, bottom: 5.0),
@@ -148,7 +148,7 @@ class HomeScreenState extends State<HomeScreen>{
     );
   }
 
-  _buildWeeklyWeather(){
+  _buildTodaysWeather(){
 
     DateTime now = DateTime.now();
     String today_date = "${now.month}월 ${now.day}일";

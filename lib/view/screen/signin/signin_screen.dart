@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 
 class SigninScreen extends StatefulWidget{
 
@@ -34,9 +35,9 @@ class SigninScreenState extends State<SigninScreen> {
   TextEditingController cpw_controller;
   TextEditingController ctype_controller;
   TextEditingController name_controller;
-  String cardCompany = '';
+  String cardCompany = '카드를 선택해 주세요.';
   bool agree = false;
-  List<String> companies = <String>['','T-MONEY','CASH-BEE'];
+  List<String> companies = <String>['카드를 선택해 주세요.','T-MONEY','CASH-BEE'];
 
   @override
   void initState() {
@@ -60,7 +61,7 @@ class SigninScreenState extends State<SigninScreen> {
           title: Text("회원 가입"),
           centerTitle: true
       ),
-      backgroundColor: Color(0xfff8cbad),
+      backgroundColor: Color(0xfffff2cc),
       body: _buildBody(),
     );
   }
@@ -130,7 +131,19 @@ class SigninScreenState extends State<SigninScreen> {
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: <Widget>[
                   Text("${fname}", textAlign: TextAlign.left, style: TextStyle(fontSize: 14.0),),
-                  TextField(textAlign: TextAlign.center, obscureText: isObscure, controller: ctrler,),
+                  TextFormField(
+                    textAlign: TextAlign.center,
+                    obscureText: isObscure,
+                    controller: ctrler,
+                    decoration: InputDecoration(
+                        enabledBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(
+                              color: Color(0xfff4b183),
+                              width: 1.5,
+                          ),
+                        ),
+                    ),
+                  ),
                 ]
             ),
           ),
@@ -146,28 +159,35 @@ class SigninScreenState extends State<SigninScreen> {
           SizedBox(height: 10.0,),
           Padding(
             padding: EdgeInsets.only(left: MediaQuery.of(context).size.width * 0.125, right: MediaQuery.of(context).size.width * 0.125),
-            child:Column(
+              child:Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: <Widget>[
                 Text("교통카드 종류", textAlign: TextAlign.left, style: TextStyle(fontSize: 14.0),),
-                SizedBox(height: 20.0,),
-                DropdownButton(
-                  value: cardCompany,
-                  isDense: true,
-                  onChanged: (String newValue) {
-                    setState(() {
-                      cardCompany = newValue;
-                    });
-                    },
-                  items: companies.map((String value){
-                    return new DropdownMenuItem(
-                      child: new Text(value, style: TextStyle(fontSize: 14),),
-                      value: value,
-                    );
-                  }).toList(),
+                SizedBox(height: 25.0,),
+                Container(
+                  padding: EdgeInsets.all(1.5),
+                  decoration: BoxDecoration(color: Color(0xfffff2cc), border: Border.all(color: Color(0xfff4b183), width: 1.5),),
+                  child:DropdownButtonHideUnderline(
+                    child: DropdownButton(
+                      iconSize: 30,
+                      value: cardCompany,
+                      isDense: true,
+                      onChanged: (String newValue) {
+                        setState(() {
+                          cardCompany = newValue;
+                        });
+                        },
+                      items: companies.map((String value){
+                        return new DropdownMenuItem(
+                          child: new Text(value, style: TextStyle(fontSize: 14),),
+                          value: value,
+                        );
+                      }).toList(),
+                    ),
+                  ),
                 ),
               ],
-            )
+              ),
           ),
         ],
       ),
@@ -175,22 +195,22 @@ class SigninScreenState extends State<SigninScreen> {
   }
   _buildTextFormField(){
     return Container(
-      decoration: BoxDecoration(borderRadius: BorderRadius.circular(10.0), color: Color(0xfffff2cc)),
+      decoration: BoxDecoration(borderRadius: BorderRadius.circular(10.0), color: Color(0xfffff2cc), border: Border.all(color: Color(0xfff4b183), width: 3), ),
       padding: EdgeInsets.only(left: MediaQuery.of(context).size.width * 0.08, right: MediaQuery.of(context).size.width * 0.08, top: 20.0, bottom: 5.0),
       margin: EdgeInsets.only(left: MediaQuery.of(context).size.width * 0.125, right: MediaQuery.of(context).size.width * 0.125, top: 10.0, bottom: 5.0),
       child:Column(
         children: <Widget>[
           Container(
-            decoration: BoxDecoration(color: Color(0xfff4b183), borderRadius: BorderRadius.circular(10.0)),
+            decoration: BoxDecoration(borderRadius: BorderRadius.circular(5.0), color: Color(0xfff4b183), ),
             padding: EdgeInsets.all(7),
-            child: Text("거래내역 조회 본인 동의", style: TextStyle(fontSize: 15),),
+            child: AutoSizeText("거래내역 조회 본인 동의", style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold), maxLines: 1,),
           ),
           SizedBox(height: 10.0,),
           Container(
             decoration: BoxDecoration(color: Color(0xfffff2cc)),
             padding: EdgeInsets.all(5),
-            child: Text("본인은 조회 하고자하는 해당 카드가 본인의 소유임을 확인하여, 조회된 거래내역 및 기록이 제 3자에게 유츌됨으로 인하여 발생하게 되는 모든 문제에 대하여는 그 책임이 본인에게 있음을 확인합니다.",
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 10),),
+            child: AutoSizeText("본인은 조회 하고자하는 해당 카드가 본인의 소유임을 확인하여, 조회된 거래내역 및 기록이 제 3자에게 유츌됨으로 인하여 발생하게 되는 모든 문제에 대하여는 그 책임이 본인에게 있음을 확인합니다.",
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 12), maxLines: null),
           ),
           SizedBox(height: 10.0,),
           Container(
