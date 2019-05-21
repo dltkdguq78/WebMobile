@@ -124,7 +124,8 @@ class PointMaterScreenState extends State<PointMarketScreen>{
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
-             Text("제휴 회사 상품 리스트"),
+            SizedBox(height: 20,),
+            Text("제휴 회사 상품 리스트"),
             Row(
               children: <Widget>[
                 SizedBox(width: 10.0,),
