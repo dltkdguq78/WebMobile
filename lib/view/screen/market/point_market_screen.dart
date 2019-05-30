@@ -89,7 +89,7 @@ class PointMaterScreenState extends State<PointMarketScreen>{
         child: Column(
           children: <Widget>[
             Icon(icon, size: 40.0,),
-            Text(text, style: TextStyle(fontSize: 15.0),),
+            Text(text+"${index}", style: TextStyle(fontSize: 15.0),),
           ],
         ),
         ),
@@ -104,20 +104,20 @@ class PointMaterScreenState extends State<PointMarketScreen>{
       children: <Widget>[
         Column(
           children: <Widget>[
-            _buildCategoryItemlist(),
-            _buildCategoryItemlist(),
-            _buildCategoryItemlist(),
-            _buildCategoryItemlist(),
-            _buildCategoryItemlist(),
-            _buildCategoryItemlist(),
-            _buildCategoryItemlist(),
+            _buildCategoryItemlist(0),
+            _buildCategoryItemlist(1),
+            _buildCategoryItemlist(2),
+            _buildCategoryItemlist(3),
+            _buildCategoryItemlist(4),
+            _buildCategoryItemlist(5),
+            _buildCategoryItemlist(6),
           ],
         ),
       ],
     );
   }
 
-  _buildCategoryItemlist(){
+  _buildCategoryItemlist(int num){
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
       child: Container(
@@ -125,7 +125,12 @@ class PointMaterScreenState extends State<PointMarketScreen>{
           mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
             SizedBox(height: 20,),
-            Text("제휴 회사 상품 리스트"),
+            Container(
+              padding: EdgeInsets.only(left: 10, bottom: 3, top: 3),
+              width: MediaQuery.of(context).size.width*5.25,
+              decoration: BoxDecoration(borderRadius: BorderRadius.circular(10.0), color: Color(0xfffff2cc)),
+              child: Text("제휴 회사 ${num} 상품 리스트"),
+            ),
             Row(
               children: <Widget>[
                 SizedBox(width: 10.0,),

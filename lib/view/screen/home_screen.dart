@@ -119,7 +119,7 @@ class HomeScreenState extends State<HomeScreen>{
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
-                  Expanded(child: AutoSizeText("Weekly WEATER", style: TextStyle(fontSize: 24.0, fontWeight: FontWeight.bold),  maxLines: 1, overflow: TextOverflow.ellipsis)
+                  Expanded(child: AutoSizeText("Weekly WEATHER", style: TextStyle(fontSize: 24.0, fontWeight: FontWeight.bold),  maxLines: 1, overflow: TextOverflow.ellipsis)
                   ),
                 ],
               ),
@@ -167,7 +167,7 @@ class HomeScreenState extends State<HomeScreen>{
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
-                  Expanded(child: AutoSizeText(today_date+"WEATER", style: TextStyle(fontSize: 24.0, fontWeight: FontWeight.bold),  maxLines: 1, overflow: TextOverflow.ellipsis)
+                  Expanded(child: AutoSizeText(today_date+"WEATHER", style: TextStyle(fontSize: 24.0, fontWeight: FontWeight.bold),  maxLines: 1, overflow: TextOverflow.ellipsis)
                   ),
                 ],
               ),
