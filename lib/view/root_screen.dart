@@ -15,8 +15,8 @@ class RootScreen extends StatefulWidget{
 class RootScreenState extends State<RootScreen>{
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
-  List<String> companies = <String>['지역을 선택해 주세요', '서울', '경기','인천', '강원', '충남', '대전', '충북', '부산', '울산', '대구', '경북', '경남', '전남', '광주', '전북', '제주', '세종'];
-  String cardCompany = '지역을 선택해 주세요';
+  List<String> regions = <String>['지역을 선택해 주세요', '서울', '경기','인천', '강원', '충남', '대전', '충북', '부산', '울산', '대구', '경북', '경남', '전남', '광주', '전북', '제주', '세종'];
+  String selRegion = '지역을 선택해 주세요';
 
   @override
   Widget build(BuildContext context) {
@@ -89,15 +89,15 @@ class RootScreenState extends State<RootScreen>{
       child:DropdownButtonHideUnderline(
         child: DropdownButton(
           iconSize: 30,
-          value: cardCompany,
+          value: selRegion,
           isDense: true,
           onChanged: (String newValue) {
             setState(() {
-              cardCompany = newValue;
-              print(cardCompany);
+              selRegion = newValue;
+              print(regions);
             });
           },
-          items: companies.map((String value){
+          items: regions.map((String value){
             return new DropdownMenuItem(
               child: new Text(value, style: TextStyle(fontSize: 14,),),
               value: value,
