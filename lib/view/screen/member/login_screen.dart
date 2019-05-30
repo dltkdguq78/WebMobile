@@ -48,10 +48,11 @@ class LoginScreenState extends State<LoginScreen> {
         child: Container(
           height: MediaQuery.of(context).size.height,
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+            //mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
-              Icon(Icons.directions_bus, size: 40.0,),
+              SizedBox(height: MediaQuery.of(context).size.height/15,),
+              Tab(icon: Image.asset('assets/loginlogo.png')),
               SizedBox(height: 10.0,),
               Text("담  비", style: TextStyle(fontSize: 40.0),),
               SizedBox(height: 20.0,),

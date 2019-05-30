@@ -233,16 +233,16 @@ class SigninScreenState extends State<SigninScreen> {
       ),
     );
   }
-  onCompleteButtonAction(){
-    print("아이디 : ${id_controller.text}");
-    print("비밀번호 : ${id_controller.text}");
-    print("비밀번호 확인 : ${id_controller.text}");
-    print("이름 : ${id_controller.text}");
-    print("교통카드 종류 : ${cardCompany}");
-    print("교통카드 아이디 : ${id_controller.text}");
-    print("교통카드 비밀번호 : ${id_controller.text}");
-    print("동의함 : ${agree}");
+  onCompleteButtonAction(){print("아이디 : ${id_controller.text}");
+  print("비밀번호 : ${id_controller.text}");
+  print("비밀번호 확인 : ${id_controller.text}");
+  print("이름 : ${id_controller.text}");
+  print("교통카드 종류 : ${cardCompany}");
+  print("교통카드 아이디 : ${id_controller.text}");
+  print("교통카드 비밀번호 : ${id_controller.text}");
+  print("동의함 : ${agree}");
   }
+
   onCancleButtonAction(){
     Navigator.pop(context);
   }

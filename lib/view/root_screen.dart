@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+
 import 'screen/home_screen.dart';
 import 'screen/member/login_screen.dart';
 import 'screen/market/point_market_screen.dart';
@@ -14,6 +15,8 @@ class RootScreen extends StatefulWidget{
 class RootScreenState extends State<RootScreen>{
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
+  List<String> companies = <String>['지역을 선택해 주세요', '서울', '경기','인천', '강원', '충남', '대전', '충북', '부산', '울산', '대구', '경북', '경남', '전남', '광주', '전북', '제주', '세종'];
+  String cardCompany = '지역을 선택해 주세요';
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +24,6 @@ class RootScreenState extends State<RootScreen>{
       key: scaffoldKey,
       appBar: AppBar(
         backgroundColor: Color(0xfff4b183),
-        title: Text("구미시 양호동"),
         centerTitle: true,
         leading: Padding(
           padding: EdgeInsets.only(left: 10.0),
@@ -31,6 +33,9 @@ class RootScreenState extends State<RootScreen>{
           ),
         ),
         actions: <Widget>[
+          _buildChoseRegion(),
+          SizedBox(width: MediaQuery.of(context).size.width * 0.08,)
+          ,
           Padding(
             padding: EdgeInsets.only(right: 20.0),
             child: InkWell(
@@ -79,7 +84,28 @@ class RootScreenState extends State<RootScreen>{
     );
   }
 
-
-
+  _buildChoseRegion(){
+    return Container(
+      child:DropdownButtonHideUnderline(
+        child: DropdownButton(
+          iconSize: 30,
+          value: cardCompany,
+          isDense: true,
+          onChanged: (String newValue) {
+            setState(() {
+              cardCompany = newValue;
+              print(cardCompany);
+            });
+          },
+          items: companies.map((String value){
+            return new DropdownMenuItem(
+              child: new Text(value, style: TextStyle(fontSize: 14,),),
+              value: value,
+            );
+          }).toList(),
+        ),
+      ),
+    );
+  }
 }
 

@@ -75,7 +75,7 @@ class HomeScreenState extends State<HomeScreen>{
                     Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: <Widget>[
-                        Icon(Icons.directions_bus, size: 30.0,),
+                        Icon(Icons.directions_bus, size: 30.0, color:Colors.purple),
                         SizedBox(width: 10.0,),
                         AutoSizeText("일주일 동안 탄 횟수 ${rideTimesInThisWeek}회", style: TextStyle(fontSize: 20.0),),
                       ],
@@ -84,7 +84,7 @@ class HomeScreenState extends State<HomeScreen>{
                     Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: <Widget>[
-                        Icon(Icons.monetization_on, size: 30.0,),
+                        Icon(Icons.monetization_on, size: 30.0,color: Colors.amber,),
                         SizedBox(width: 10.0,),
                         Text("총 마일리지", style: TextStyle(fontSize: 20.0),),
                         Text("${totalPoint}P", style: TextStyle(color:Colors.amber, fontSize: 20.0),),
@@ -131,13 +131,13 @@ class HomeScreenState extends State<HomeScreen>{
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  _buildWeeklyWeatherItem("토", 0, 6),
-                  _buildWeeklyWeatherItem("일", 0, 9),
-                  _buildWeeklyWeatherItem("월", 0, 12),
-                  _buildWeeklyWeatherItem("화", 0, 15),
-                  _buildWeeklyWeatherItem("수", 0, 15),
-                  _buildWeeklyWeatherItem("목", 0, 15),
-                  _buildWeeklyWeatherItem("금", 0, 15),
+                  _buildWeeklyWeatherItem("토", 0, 6, "맑음"),
+                  _buildWeeklyWeatherItem("일", 0, 9, "맑음"),
+                  _buildWeeklyWeatherItem("월", 0, 12, "비"),
+                  _buildWeeklyWeatherItem("화", 0, 15, "눈"),
+                  _buildWeeklyWeatherItem("수", 0, 15, "흐림"),
+                  _buildWeeklyWeatherItem("목", 0, 15, "비"),
+                  _buildWeeklyWeatherItem("금", 0, 15, "눈"),
                 ],
               ),
               ),
@@ -179,14 +179,14 @@ class HomeScreenState extends State<HomeScreen>{
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  _buildTodaysWeatherItem(10, 0, 6),
-                  _buildTodaysWeatherItem(9, 0, 9),
-                  _buildTodaysWeatherItem(8, 0, 12),
-                  _buildTodaysWeatherItem(4, 0, 15),
-                  _buildTodaysWeatherItem(8, 0, 18),
-                  _buildTodaysWeatherItem(9, 0, 21),
-                  _buildTodaysWeatherItem(8, 0, 0),
-                  _buildTodaysWeatherItem(4, 0, 3),
+                  _buildTodaysWeatherItem(10, 0, 6, "맑음"),
+                  _buildTodaysWeatherItem(9, 0, 9, "흐림"),
+                  _buildTodaysWeatherItem(8, 0, 12, "비"),
+                  _buildTodaysWeatherItem(4, 0, 15, "눈"),
+                  _buildTodaysWeatherItem(8, 0, 18, "맑음"),
+                  _buildTodaysWeatherItem(9, 0, 21, "맑음"),
+                  _buildTodaysWeatherItem(8, 0, 0, "맑음"),
+                  _buildTodaysWeatherItem(4, 0, 3, "맑음"),
                 ],
               ),
               ),
@@ -197,13 +197,13 @@ class HomeScreenState extends State<HomeScreen>{
     );
   }
 
-  _buildTodaysWeatherItem(int temp, int hu, int time){
+  _buildTodaysWeatherItem(int temp, int hu, int time, String weather){
 
     return Padding(
       padding: EdgeInsets.only(left: 20.0),
       child: Column(
         children: <Widget>[
-          Icon(Icons.cloud, size: 60.0,),
+          _buildWetherIcon(weather),
           Text("$temp ℃", style: TextStyle(fontSize: 20.0),),
           SizedBox(height: 5.0,),
           Text("$hu%", style: TextStyle(fontSize: 20.0)),
@@ -214,7 +214,20 @@ class HomeScreenState extends State<HomeScreen>{
     );
   }
 
-  _buildWeeklyWeatherItem(String dayofweek, int min_temp, int max_temp){
+  _buildWetherIcon(String temp){
+    switch(temp){
+      case '흐림':
+        return Icon(Icons.cloud, size: 60.0, color: Colors.blueGrey);
+      case '맑음':
+        return Icon(Icons.wb_sunny, size: 60.0, color: Colors.deepOrangeAccent);
+      case '비':
+        return Icon(Icons.beach_access, size: 60.0, color: Colors.blue);
+      case '눈':
+        return Icon(Icons.grain, size: 60.0, color: Colors.indigoAccent);
+    }
+  }
+
+  _buildWeeklyWeatherItem(String dayofweek, int min_temp, int max_temp, String weather){
     double screen_width = MediaQuery.of(context).size.width;
     return Padding(
       padding: EdgeInsets.only(left: 20.0),
@@ -222,7 +235,7 @@ class HomeScreenState extends State<HomeScreen>{
         children: <Widget>[
           Text("${dayofweek}", style: TextStyle(fontSize: screen_width/20.0),),
           SizedBox(height: 5.0,),
-          Icon(Icons.cloud, size: screen_width / 10,),
+          _buildWetherIcon(weather),
           SizedBox(height: 5.0,),
           Text("$min_temp ℃/ $max_temp ℃", style: TextStyle(fontSize: screen_width/40.0)),
         ],
