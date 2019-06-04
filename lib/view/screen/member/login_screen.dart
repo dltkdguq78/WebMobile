@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:dambi/view/screen/signin/signin_screen.dart';
+import 'package:dambi/view/screen/member/signin_screen.dart';
 
 class LoginScreen extends StatefulWidget {
 

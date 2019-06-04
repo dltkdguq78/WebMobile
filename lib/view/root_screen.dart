@@ -15,8 +15,8 @@ class RootScreen extends StatefulWidget{
 class RootScreenState extends State<RootScreen>{
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
-  List<String> regions = <String>['지역을 선택해 주세요', '서울', '경기','인천', '강원', '충남', '대전', '충북', '부산', '울산', '대구', '경북', '경남', '전남', '광주', '전북', '제주', '세종'];
-  String selRegion = '지역을 선택해 주세요';
+  List<String> regions = <String>['서울', '경기','인천', '강원', '충남', '대전', '충북', '부산', '울산', '대구', '경북', '경남', '전남', '광주', '전북', '제주', '세종'];
+  String selRegion = '서울';
 
   @override
   Widget build(BuildContext context) {
@@ -47,7 +47,7 @@ class RootScreenState extends State<RootScreen>{
           )
         ],
       ),
-      body: HomeScreen(),
+      body: HomeScreen(region: selRegion,),
       backgroundColor: Color(0xfff8cbad),
       drawer: _buildDrawer(),
     );
@@ -71,7 +71,7 @@ class RootScreenState extends State<RootScreen>{
             ),
           ),
           ListTile(
-            onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (context) => LoginScreen(user_id: "이광오짱짱맨",))),
+            onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (context) => LoginScreen(user_id: "",))),
             title: Text("로그인"),
           ),
           ListTile(
@@ -85,7 +85,9 @@ class RootScreenState extends State<RootScreen>{
   }
 
   _buildChoseRegion(){
+    double screen_width = MediaQuery.of(context).size.width;
     return Container(
+      padding: EdgeInsets.only(right: screen_width/6),
       child:DropdownButtonHideUnderline(
         child: DropdownButton(
           iconSize: 30,
@@ -99,7 +101,7 @@ class RootScreenState extends State<RootScreen>{
           },
           items: regions.map((String value){
             return new DropdownMenuItem(
-              child: new Text(value, style: TextStyle(fontSize: 14,),),
+              child: new Text(value, style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),),
               value: value,
             );
           }).toList(),

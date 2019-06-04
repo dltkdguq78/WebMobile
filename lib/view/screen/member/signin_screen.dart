@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:dambi/view/screen/member/signin/signin.dart';
 
 class SigninScreen extends StatefulWidget{
 
@@ -42,13 +43,7 @@ class SigninScreenState extends State<SigninScreen> {
   @override
   void initState() {
     scrollController = ScrollController();
-    id_controller = TextEditingController(text: widget.user_id);
-    pw_controller = TextEditingController(text: widget.user_pw);
-    name_controller = TextEditingController(text: widget.user_name);
-    ctype_controller = TextEditingController(text: widget.user_ctype);
-    cid_controller = TextEditingController(text: widget.user_cid);
-    cpw_controller = TextEditingController(text: widget.user_cpw);
-    checkpw_controller = TextEditingController(text: widget.user_checkpw);
+
 
     super.initState();
   }
@@ -233,16 +228,46 @@ class SigninScreenState extends State<SigninScreen> {
       ),
     );
   }
-  onCompleteButtonAction(){print("아이디 : ${id_controller.text}");
-  print("비밀번호 : ${id_controller.text}");
-  print("비밀번호 확인 : ${id_controller.text}");
-  print("이름 : ${id_controller.text}");
-  print("교통카드 종류 : ${cardCompany}");
-  print("교통카드 아이디 : ${id_controller.text}");
-  print("교통카드 비밀번호 : ${id_controller.text}");
-  print("동의함 : ${agree}");
-  }
+  onCompleteButtonAction(){
+    id_controller = TextEditingController(text: widget.user_id);
+    pw_controller = TextEditingController(text: widget.user_pw);
+    name_controller = TextEditingController(text: widget.user_name);
+    ctype_controller = TextEditingController(text: widget.user_ctype);
+    cid_controller = TextEditingController(text: widget.user_cid);
+    cpw_controller = TextEditingController(text: widget.user_cpw);
+    checkpw_controller = TextEditingController(text: widget.user_checkpw);
 
+    print("아이디 : ${id_controller.text}");
+    print("비밀번호 : ${id_controller.text}");
+    print("비밀번호 확인 : ${id_controller.text}");
+    print("이름 : ${id_controller.text}");
+    print("교통카드 종류 : ${cardCompany}");
+    print("교통카드 아이디 : ${id_controller.text}");
+    print("교통카드 비밀번호 : ${id_controller.text}");
+    print("동의함 : ${agree}");
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        // return object of type AlertDialog
+        return AlertDialog(
+          title: Text("알림"),
+          content: SignIn(id: id_controller.text,
+              idpass: id_controller.text,
+              Tid: id_controller.text,
+              Tpass: id_controller.text),
+          actions: <Widget>[
+            // usually buttons at the bottom of the dialog
+            new FlatButton(
+              child: new Text("Close"),
+              onPressed: () {
+                Navigator.of(context).pop();
+                },
+              ),
+            ],
+          );
+        },
+      );
+  }
   onCancleButtonAction(){
     Navigator.pop(context);
   }

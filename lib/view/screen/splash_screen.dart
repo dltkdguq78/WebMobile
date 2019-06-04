@@ -24,7 +24,8 @@ class SplashScreenState extends State<SplashScreen> {
   }
 
   onDoneLoading() async {
-    Navigator.of(context).push(MaterialPageRoute(builder: (context) => RootScreen()));
+    Route route = MaterialPageRoute(builder: (context) => RootScreen());
+    Navigator.pushReplacement(context, route);
   }
 
 
