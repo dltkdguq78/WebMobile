@@ -86,7 +86,7 @@ class WeatherScreenState extends State<Weather> {
 
   _buildWetherIcon(String temp){
     switch(temp){
-      case '흐림':
+      case '구름조금':
         return Icon(Icons.cloud, size: 46.0, color: Colors.blueGrey);
       case '맑음':
         return Icon(Icons.wb_sunny, size: 46.0, color: Colors.deepOrangeAccent);

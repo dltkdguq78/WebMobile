@@ -54,6 +54,14 @@ flutter:
     - assets/soso.png
     - assets/very_bad.png
     - assets/bad.png
+    - assets/ItemMenu/candy.png
+    - assets/ItemMenu/chips.png
+    - assets/ItemMenu/chocolate.png
+    - assets/ItemMenu/coffee.png
+    - assets/ItemMenu/icecream.png
+    - assets/ItemMenu/ramen.png
+    - assets/ItemMenu/water.png
+    - assets/ItemImage/2.jpg
 
   # To add assets to your application, add an assets section, like this:
   # assets:

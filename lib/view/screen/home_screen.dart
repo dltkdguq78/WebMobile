@@ -108,7 +108,7 @@ class HomeScreenState extends State<HomeScreen>{
 
   _buildTodaysWeather(){
     DateTime now = DateTime.now();
-    String time_now = "${now.year}-0${now.month}-0${now.day} ${now.hour}";
+    String time_now = "${now.year}-0${now.month}-0${now.day} ${now.hour-1}";
     String today_date = "${now.month}월 ${now.day}일";
     double screen_width = MediaQuery.of(context).size.width;
 
@@ -134,7 +134,7 @@ class HomeScreenState extends State<HomeScreen>{
             ),
             SizedBox(height: 10.0,),
             Padding(
-              padding: EdgeInsets.all(screen_width/50),
+              padding: EdgeInsets.all(screen_width/200),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[

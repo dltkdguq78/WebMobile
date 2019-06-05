@@ -52,7 +52,11 @@ class LoginScreenState extends State<LoginScreen> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
               SizedBox(height: MediaQuery.of(context).size.height/15,),
-              Tab(icon: Image.asset('assets/loginlogo.png')),
+              Image.asset(
+                'assets/loginlogo.png',
+                width: 120,
+                height: 120,
+              ),
               SizedBox(height: 10.0,),
               Text("담  비", style: TextStyle(fontSize: 40.0),),
               SizedBox(height: 20.0,),
@@ -112,7 +116,6 @@ class LoginScreenState extends State<LoginScreen> {
       ),
     );
   }
-
   onLoginButtonAction() {
     print('로그인 버튼 터치');
     print('${id_controller.text} / ${pw_controller.text}');
@@ -121,9 +124,7 @@ class LoginScreenState extends State<LoginScreen> {
     print("아직 안만들었어");
   }
   onSignInButtonAction(){
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => SigninScreen()),
-    );
+    Route route = MaterialPageRoute(builder: (context) => SigninScreen());
+    Navigator.pushReplacement(context, route);
   }
 }
